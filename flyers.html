@@ -14,13 +14,18 @@
                 width: 100%;
                 min-width: 0;
                 display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem;
+                grid-template-columns: repeat(8, 1fr);
+                gap: 1rem;
                 align-items: start;
+            }
+            @media (max-width: 1024px) {
+                .poster-grid {
+                    grid-template-columns: repeat(6, 1fr);
+                }
             }
             @media (max-width: 768px) {
                 .poster-grid {
-                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-columns: repeat(4, 1fr);
                     gap: 1rem;
                 }
             }
@@ -38,6 +43,7 @@
             }
             .poster-grid figcaption {
                 margin-top: 0.5rem;
+                font-size: 0.85rem;
             }
             .lightbox {
                 display: none;
