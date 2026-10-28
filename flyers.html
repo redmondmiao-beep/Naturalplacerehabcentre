@@ -6,6 +6,52 @@
         <title>海报 Posters | Natural Place Rehab Centre</title>
         <link href="css/home.css" rel="stylesheet"/>
         <link href="css/style.css" rel="stylesheet"/>
+        <style>
+            .poster-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+                align-items: start;
+            }
+            @media (max-width: 768px) {
+                .poster-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 1rem;
+                }
+            }
+            .poster-grid figure {
+                margin: 0;
+                text-align: center;
+                cursor: zoom-in;
+            }
+            .poster-grid img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+            .poster-grid figcaption {
+                margin-top: 0.5rem;
+            }
+            .lightbox {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.85);
+                z-index: 1000;
+                align-items: center;
+                justify-content: center;
+                cursor: zoom-out;
+            }
+            .lightbox.open {
+                display: flex;
+            }
+            .lightbox img {
+                max-width: 92vw;
+                max-height: 92vh;
+                width: auto;
+                height: auto;
+            }
+        </style>
     </head>
     <body>
         <div class="header">
@@ -27,13 +73,21 @@
                 <h2 class="content-title">海报 Posters</h2>
             </div>
             <div class="content-list">
-                <p class="content-text">体型管理 Body Shape Management</p>
-                <img src="images/flyers/bodyshape-1.png" alt="体型管理 Body Shape Management" style="max-width: 90vw; height: auto;">
-                <p class="content-text">失眠 Insomnia</p>
-                <img src="images/flyers/insomnia-1.png" alt="失眠 Insomnia" style="max-width: 90vw; height: auto;">
-                <p class="content-text">压力焦虑 Stress & Anxiety</p>
-                <img src="images/flyers/stress-1.png" alt="压力焦虑 Stress & Anxiety" style="max-width: 90vw; height: auto;">
-                <p class="content-text">更多海报陆续更新中。More posters coming soon.</p>
+                <div class="poster-grid">
+                    <figure>
+                        <img src="images/flyers/bodyshape-1.png" alt="体型管理 Body Shape Management" data-full="images/flyers/bodyshape-1.png">
+                        <figcaption class="content-text">体型管理 Body Shape Management</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/flyers/insomnia-1.png" alt="失眠 Insomnia" data-full="images/flyers/insomnia-1.png">
+                        <figcaption class="content-text">失眠 Insomnia</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/flyers/stress-1.png" alt="压力焦虑 Stress & Anxiety" data-full="images/flyers/stress-1.png">
+                        <figcaption class="content-text">压力焦虑 Stress &amp; Anxiety</figcaption>
+                    </figure>
+                </div>
+                <p class="content-text">点击海报可放大查看。更多海报陆续更新中。More posters coming soon.</p>
             </div>
         </div>
         <div class="footer">
@@ -46,5 +100,26 @@
                 <p>+1(416)889-9872</p>
             </div>
         </div>
+        <div class="lightbox" id="lightbox">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+        <script>
+            (function () {
+                var box = document.getElementById('lightbox');
+                var img = document.getElementById('lightbox-img');
+                var thumbs = document.querySelectorAll('.poster-grid img');
+                thumbs.forEach(function (t) {
+                    t.addEventListener('click', function () {
+                        img.src = t.getAttribute('data-full');
+                        img.alt = t.alt;
+                        box.classList.add('open');
+                    });
+                });
+                box.addEventListener('click', function () {
+                    box.classList.remove('open');
+                    img.src = '';
+                });
+            })();
+        </script>
     </body>
 </html>
