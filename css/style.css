@@ -30,10 +30,11 @@ html, body {
 }
 
 .nav-link {
-    font-size: 1.2rem;
-    color: black;
-    margin-right: 1vw;
-    margin-left: 1vw;
+    font-size: 1rem;
+    color: #222222;
+    font-weight: 600;
+    margin-right: 1.8vw;
+    margin-left: 1.8vw;
     text-decoration: none;
 }
 
@@ -42,14 +43,25 @@ html, body {
 }
 
 .logo {
-    max-height: 10vh;
+    max-height: 8vh;
+    display: block;
+}
+
+.header picture {
+    display: flex;
+    align-items: center;
 }
 
 
 .header-book-button {
-    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: 600;
     text-decoration: none;
-    padding: 7px 20px;
+    padding: 5px 14px;
     background-color: white;
     color: black;
     border: var(--blue) solid;
