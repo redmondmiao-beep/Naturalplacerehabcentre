@@ -38,6 +38,67 @@
 
             </div>
         </div>
+<style>
+.poster-flow { padding: 1.5rem 0 0.5rem; overflow: hidden; }
+.poster-flow-head { display: flex; align-items: baseline; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.poster-flow-head h2 { margin: 0; font-size: 1.4rem; }
+.poster-flow-head a { font-size: 0.95rem; white-space: nowrap; }
+.poster-flow-viewport { overflow: hidden; margin-top: 1rem; }
+.poster-flow-track { display: flex; gap: 0.75rem; width: max-content; animation: poster-flow-slide 75s linear infinite; }
+.poster-flow-viewport:hover .poster-flow-track { animation-play-state: paused; }
+.poster-flow-track img { height: 240px; width: auto; display: block; cursor: zoom-in; border-radius: 6px; }
+@keyframes poster-flow-slide { to { transform: translateX(-50%); } }
+@media (max-width: 768px) { .poster-flow-track img { height: 180px; } }
+@media (prefers-reduced-motion: reduce) { .poster-flow-track { animation: none; } }
+.poster-flow-lightbox { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; }
+.poster-flow-lightbox.open { display: flex; }
+.poster-flow-lightbox img { max-width: 92vw; max-height: 92vh; width: auto; height: auto; }
+</style>
+<section class="poster-flow">
+<div class="poster-flow-head">
+<h2>海报 Posters</h2>
+<a href="flyers.html">查看全部海报 →</a>
+</div>
+<div class="poster-flow-viewport">
+<div class="poster-flow-track">
+<img src="images/flyers/thumbs/bodyshape-1.jpg" alt="体型管理 Body Shape Management" data-full="images/flyers/bodyshape-1.png">
+<img src="images/flyers/thumbs/insomnia-1.jpg" alt="失眠 Insomnia" data-full="images/flyers/insomnia-1.png">
+<img src="images/flyers/thumbs/stress-1.jpg" alt="压力焦虑 Stress &amp; Anxiety" data-full="images/flyers/stress-1.png">
+<img src="images/flyers/thumbs/pain-1.jpg" alt="疼痛管理 Pain Management" data-full="images/flyers/pain-1.png">
+<img src="images/flyers/thumbs/taichi-zh-1.jpg" alt="陈式功夫太极 Chen-Style Kung Fu Tai Chi" data-full="images/flyers/taichi-zh-1.png">
+<img src="images/flyers/thumbs/taichi-en-1.jpg" alt="Chen-Style Kung Fu Tai Chi" data-full="images/flyers/taichi-en-1.png">
+<img src="images/flyers/thumbs/menopause-1.jpg" alt="更年期调理 Women's Wellness" data-full="images/flyers/menopause-1.png">
+<img src="images/flyers/thumbs/tmj-1.jpg" alt="颞下颌关节紊乱 TMJ Disorder" data-full="images/flyers/tmj-1.png">
+<img src="images/flyers/thumbs/postpartum-1.jpg" alt="产后修复 Postpartum Recovery" data-full="images/flyers/postpartum-1.png">
+<img src="images/flyers/thumbs/tcm-conditioning-1.jpg" alt="中医调理 Traditional Chinese Medicine" data-full="images/flyers/tcm-conditioning-1.png">
+<img src="images/flyers/thumbs/acne-1.jpg" alt="痤疮 Acne" data-full="images/flyers/acne-1.png">
+<img src="images/flyers/thumbs/posture-1.jpg" alt="体态评估 Posture Assessment" data-full="images/flyers/posture-1.png">
+<img src="images/flyers/thumbs/buyunbuyu-1.jpg" alt="助孕调理 Fertility Support" data-full="images/flyers/buyunbuyu-1.png">
+<img src="images/flyers/thumbs/skin-rash-1.jpg" alt="皮肤反复发作 Recurring Skin Rashes" data-full="images/flyers/skin-rash-1.png">
+<img src="images/flyers/thumbs/kungfu-taichi-1.jpg" alt="功夫太极 Kung Fu Tai Chi" data-full="images/flyers/kungfu-taichi-1.png">
+</div>
+</div>
+</section>
+<div class="poster-flow-lightbox" id="poster-flow-lightbox"><img id="poster-flow-lightbox-img" src="" alt=""></div>
+<script>
+(function () {
+var box = document.getElementById('poster-flow-lightbox');
+var img = document.getElementById('poster-flow-lightbox-img');
+var track = document.querySelector('.poster-flow-track');
+track.innerHTML += track.innerHTML;
+document.querySelectorAll('.poster-flow-track img').forEach(function (t) {
+t.addEventListener('click', function () {
+img.src = t.getAttribute('data-full');
+img.alt = t.alt;
+box.classList.add('open');
+});
+});
+box.addEventListener('click', function () {
+box.classList.remove('open');
+img.src = '';
+});
+})();
+</script>
         <div class="content-div">
             <div class="content-header">
                 <h2 class="content-title">– 承古传新 · 守护健康 –</h2>
